@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Language Practice Partner</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app-header">
+        <h1>AI Language Practice Partner</h1>
+        <p>Start practicing with text chat.</p>
+      </header>
+
+      <section class="setup-panel" aria-label="AI setup">
+        <h2>AI Configuration</h2>
+        <div class="setup-grid">
+          <div class="field">
+            <label for="languageSelect">Practice language</label>
+            <div class="inline-controls">
+              <select id="languageSelect" name="languageSelect">
+                <option value="en">English</option>
+                <option value="de">German</option>
+              </select>
+              <button id="confirmLanguageButton" type="button">Confirm language</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="modelSource">Model source</label>
+            <select id="modelSource" name="modelSource">
+              <option value="default">Default Agent (ready to go)</option>
+              <option value="bring-your-own">Bring Your Own Model</option>
+            </select>
+          </div>
+
+          <div id="defaultAgentNotice" class="notice">
+            Default Agent uses the app's managed AI so users can start immediately.
+          </div>
+
+          <div id="customModelFields" class="custom-model-fields hidden">
+            <div class="field">
+              <label for="providerName">Provider</label>
+              <input
+                id="providerName"
+                name="providerName"
+                type="text"
+                placeholder="OpenAI, Anthropic, Groq..."
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="field">
+              <label for="modelName">Model</label>
+              <input
+                id="modelName"
+                name="modelName"
+                type="text"
+                placeholder="gpt-4.1-mini, claude-3-5-sonnet..."
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="field">
+              <label for="apiKey">API key (local only in this MVP)</label>
+              <input
+                id="apiKey"
+                name="apiKey"
+                type="password"
+                placeholder="Paste your API key"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="chatWindow" class="chat-window" aria-live="polite">
+        <div class="message bot">
+          <p>Hello! Type a message and I will reply.</p>
+        </div>
+      </section>
+
+      <form id="chatForm" class="chat-form">
+        <label for="messageInput" class="sr-only">Your message</label>
+        <input
+          id="messageInput"
+          name="message"
+          type="text"
+          placeholder="Write your message..."
+          autocomplete="off"
+          required
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
