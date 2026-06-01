@@ -10,75 +10,103 @@
     <main class="app">
       <header class="app-header">
         <h1>AI Language Practice Partner</h1>
-        <p>Start practicing with text chat.</p>
+        <p>Practice with the managed AI tutor.</p>
       </header>
 
-      <section class="setup-panel" aria-label="AI setup">
-        <h2>AI Configuration</h2>
+      <section class="setup-panel" aria-label="Practice setup">
+        <h2>Practice setup</h2>
         <div class="setup-grid">
           <div class="field">
-            <label for="languageSelect">Practice language</label>
-            <div class="inline-controls">
-              <select id="languageSelect" name="languageSelect">
-                <option value="en">English</option>
-                <option value="de">German</option>
-              </select>
-              <button id="confirmLanguageButton" type="button">Confirm language</button>
+            <span class="field-label" id="providerToggleLabel">AI provider</span>
+            <div class="provider-toggle" role="group" aria-labelledby="providerToggleLabel">
+              <button
+                type="button"
+                class="provider-btn active"
+                data-provider="gemini"
+                aria-pressed="true"
+              >
+                Gemini
+              </button>
+              <button
+                type="button"
+                class="provider-btn"
+                data-provider="openai"
+                aria-pressed="false"
+              >
+                OpenAI
+              </button>
             </div>
           </div>
 
           <div class="field">
-            <label for="modelSource">Model source</label>
-            <select id="modelSource" name="modelSource">
-              <option value="default">Default Agent (ready to go)</option>
-              <option value="bring-your-own">Bring Your Own Model</option>
+            <label for="languageSelect">Practice language</label>
+            <select id="languageSelect" name="languageSelect">
+              <option value="en">English</option>
+              <option value="de">German</option>
             </select>
           </div>
 
+          <div class="field">
+            <label for="cefrLevel">Proficiency (CEFR)</label>
+            <select id="cefrLevel" name="cefrLevel">
+              <option value="A1">A1</option>
+              <option value="A2">A2</option>
+              <option value="B1">B1</option>
+              <option value="B2">B2</option>
+              <option value="C1">C1</option>
+              <option value="C2">C2</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="modeSelect">Learning mode</label>
+            <select id="modeSelect" name="modeSelect">
+              <option value="chat">Chat with me</option>
+              <option value="correct">Correct me</option>
+              <option value="teach">Teach me</option>
+            </select>
+          </div>
+
+          <div id="correctionStyleField" class="field hidden">
+            <label for="correctionStyle">Correction style</label>
+            <select id="correctionStyle" name="correctionStyle">
+              <option value="inline">Inline fix</option>
+              <option value="end">End of message</option>
+              <option value="explain">Explain the rule</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="lessonSelect">Lesson unit</label>
+            <select id="lessonSelect" name="lessonSelect">
+              <option value="">Free conversation</option>
+            </select>
+          </div>
+
+          <div class="field checkbox-field">
+            <label>
+              <input id="strictLanguage" type="checkbox" />
+              Target language only (no support language)
+            </label>
+          </div>
+
           <div id="defaultAgentNotice" class="notice">
-            Default Agent uses the app's managed AI so users can start immediately.
+            Pick Gemini or OpenAI above. API keys stay in <code>.env</code> — see
+            <code>docs/MODELS.md</code>.
           </div>
 
-          <div id="customModelFields" class="custom-model-fields hidden">
-            <div class="field">
-              <label for="providerName">Provider</label>
-              <input
-                id="providerName"
-                name="providerName"
-                type="text"
-                placeholder="OpenAI, Anthropic, Groq..."
-                autocomplete="off"
-              />
-            </div>
-
-            <div class="field">
-              <label for="modelName">Model</label>
-              <input
-                id="modelName"
-                name="modelName"
-                type="text"
-                placeholder="gpt-4.1-mini, claude-3-5-sonnet..."
-                autocomplete="off"
-              />
-            </div>
-
-            <div class="field">
-              <label for="apiKey">API key (local only in this MVP)</label>
-              <input
-                id="apiKey"
-                name="apiKey"
-                type="password"
-                placeholder="Paste your API key"
-                autocomplete="off"
-              />
-            </div>
-          </div>
+          <div id="apiStatus" class="notice" aria-live="polite">Checking server…</div>
         </div>
+      </section>
+
+      <section id="progressPanel" class="progress-panel hidden" aria-live="polite">
+        <h2>Lesson progress</h2>
+        <p id="progressSummary">No progress yet.</p>
       </section>
 
       <section id="chatWindow" class="chat-window" aria-live="polite">
         <div class="message bot">
-          <p>Hello! Type a message and I will reply.</p>
+          <p>Hello! Choose your settings and send a message to start.</p>
         </div>
       </section>
 
@@ -92,10 +120,10 @@
           autocomplete="off"
           required
         />
-        <button type="submit">Submit</button>
+        <button id="submitButton" type="submit">Send</button>
       </form>
     </main>
 
-    <script src="./app.js"></script>
+    <script src="./app.js" type="module"></script>
   </body>
 </html>

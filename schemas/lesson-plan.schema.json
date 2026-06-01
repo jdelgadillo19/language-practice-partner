@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://language-practice-partner.local/schemas/lesson-plan.schema.json",
+  "title": "LessonPlan",
+  "type": "object",
+  "required": [
+    "unitId",
+    "title",
+    "targetLanguage",
+    "cefrLevel",
+    "objectives",
+    "targetPhrases",
+    "grammarFocus"
+  ],
+  "properties": {
+    "unitId": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "targetLanguage": { "type": "string", "enum": ["en", "de"] },
+    "cefrLevel": {
+      "type": "string",
+      "enum": ["A1", "A2", "B1", "B2", "C1", "C2"]
+    },
+    "objectives": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "targetPhrases": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "grammarFocus": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "exercises": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "prompt"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["reuse_phrase", "translate", "roleplay", "free_response"]
+          },
+          "prompt": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

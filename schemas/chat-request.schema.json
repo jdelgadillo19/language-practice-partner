@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://language-practice-partner.local/schemas/chat-request.schema.json",
+  "title": "ChatRequest",
+  "type": "object",
+  "required": ["sessionId", "message", "targetLanguage", "cefrLevel", "mode"],
+  "properties": {
+    "sessionId": { "type": "string", "minLength": 1 },
+    "message": { "type": "string", "minLength": 1 },
+    "targetLanguage": { "type": "string", "enum": ["en", "de"] },
+    "cefrLevel": {
+      "type": "string",
+      "enum": ["A1", "A2", "B1", "B2", "C1", "C2"]
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["chat", "correct", "teach"]
+    },
+    "correctionStyle": {
+      "type": "string",
+      "enum": ["inline", "end", "explain"],
+      "default": "end"
+    },
+    "lessonUnitId": { "type": ["string", "null"] },
+    "strictTargetLanguageOnly": { "type": "boolean", "default": false },
+    "supportLanguage": { "type": "string", "enum": ["en", "de"], "default": "en" },
+    "chatProvider": {
+      "type": "string",
+      "enum": ["gemini", "openai"]
+    }
+  },
+  "additionalProperties": false
+}

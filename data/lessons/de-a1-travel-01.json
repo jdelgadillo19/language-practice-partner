@@ -1,0 +1,31 @@
+{
+  "unitId": "de-a1-travel-01",
+  "title": "At the train station",
+  "targetLanguage": "de",
+  "cefrLevel": "A1",
+  "objectives": [
+    "ask for a ticket to a destination",
+    "understand platform numbers",
+    "say thank you politely"
+  ],
+  "targetPhrases": [
+    "Ein Ticket nach Berlin, bitte.",
+    "Wie viel kostet das?",
+    "Gleis 3",
+    "Danke schön."
+  ],
+  "grammarFocus": [
+    "accusative after 'nach' with place names",
+    "bitte for polite requests"
+  ],
+  "exercises": [
+    {
+      "type": "reuse_phrase",
+      "prompt": "Ask for a ticket to Munich using 'Ein Ticket nach ..., bitte.'"
+    },
+    {
+      "type": "roleplay",
+      "prompt": "You are at the counter. The agent asks for your destination."
+    }
+  ]
+}

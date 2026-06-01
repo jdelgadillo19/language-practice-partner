@@ -48,9 +48,47 @@ body {
   gap: 0.35rem;
 }
 
-.field label {
+.field label,
+.field-label {
   font-size: 0.9rem;
   color: #374151;
+}
+
+.provider-toggle {
+  display: flex;
+  gap: 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  overflow: hidden;
+  width: fit-content;
+}
+
+.provider-btn {
+  border: 0;
+  background: #ffffff;
+  color: #374151;
+  font-size: 0.95rem;
+  padding: 0.65rem 1.1rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.provider-btn + .provider-btn {
+  border-left: 1px solid #cbd5e1;
+}
+
+.provider-btn.active {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.provider-btn:hover:not(:disabled):not(.active) {
+  background: #f3f4f6;
+}
+
+.provider-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .field input,
@@ -177,4 +215,52 @@ body {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+.checkbox-field label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.notice-error {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #991b1b;
+}
+
+.progress-panel {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.progress-panel h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+}
+
+.progress-panel p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #166534;
+}
+
+.chat-form button:disabled,
+.chat-form input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.message.bot.message-error p {
+  background: #fee2e2;
+  color: #7f1d1d;
+}
+
+code {
+  font-size: 0.85em;
 }

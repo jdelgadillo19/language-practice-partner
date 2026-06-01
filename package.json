@@ -1,0 +1,14 @@
+{
+  "name": "language-practice-partner",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "AI language practice partner with managed Gemini backend",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://language-practice-partner.local/schemas/session-progress.schema.json",
+  "title": "SessionProgress",
+  "type": "object",
+  "required": ["unitId", "completedObjectives", "notes"],
+  "properties": {
+    "unitId": { "type": "string" },
+    "completedObjectives": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "phrasesPracticed": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}
